@@ -35,6 +35,10 @@ const config: Config = {
         '.text-shadow-redglow': {
           textShadow: '0 0 10px rgba(197, 35, 68, 0.5), 0 0 20px rgba(197, 35, 68, 0.4), 0 0 30px rgba(197, 35, 68, 0.3), 0 0 40px rgba(197, 35, 68, 0.2), 0 0 50px rgba(197, 35, 68, 0.1)',
         },
+        '::selection': {
+          backgroundColor: '#FFFFFF',
+          color: '#C52344',
+        },
       });
     },
   ],
