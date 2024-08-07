@@ -2,6 +2,7 @@
 import React from "react";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
+import Projects from "@/components/Projects";
 import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
 import * as reactSpring from "@react-spring/three";
 import * as drei from "@react-three/drei";
@@ -28,13 +29,10 @@ export default function Home() {
           />
         </ShaderGradientCanvas>
 
-        <div className="absolute inset-0 flex flex-col justify-start items-start p-8 z-10 mb-24 mr-8">
-          <h1 className="text-white text-3xl md:text-4xl font-bold mb-4 text-shadow-glow ml-8 pt-8">
+        <div className="absolute inset-0 flex flex-col justify-end items-start p-8 z-10 mb-24 ml-8">
+          <h1 className="text-white text-3xl md:text-4xl font-bold text-shadow-glow pb-48 mb-96">
             Jakarta, Indonesia
           </h1>
-        </div>
-
-        <div className="absolute inset-0 flex flex-col justify-end items-start p-8 z-10 mb-24 ml-8">
           <h1 className="text-white text-5xl md:text-7xl lg:text-9xl font-bold mb-4 text-shadow-glow">
             Valtrizt
           </h1>
@@ -50,18 +48,11 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('/2nd Section.png')`,
+            backgroundImage: `url('/2and3.png')`,
           }}
         ></div>
         <About />
-      </div>
-      <div className="relative w-full min-h-screen bg-customDark mt-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/ExpF.png')`,
-          }}
-        ></div>
+        <Projects />
       </div>
     </main>
   );
