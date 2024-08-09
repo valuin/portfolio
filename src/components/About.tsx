@@ -48,7 +48,7 @@ const About: React.FC = () => {
       </motion.h1>
       <div className="relative z-10 flex flex-col min-h-screen justify-center items-center text-white text-shadow-glow">
         <div className="font-mono text-lg md:text-3xl space-y-4">
-          <AnimatedText delay={0.1}>this.<span className="text-customRed text-shadow-redglow">name</span> = "Valtrizt";</AnimatedText>
+          <AnimatedText delay={0.1}>this.<span className="text-customRed text-shadow-redglow">name</span> = "Valtrizt Khalifah";</AnimatedText>
           <AnimatedText delay={0.2}>this.<span className="text-customRed text-shadow-redglow">role</span> = "Full Stack Dev";</AnimatedText>
           <AnimatedText delay={0.3}>this.<span className="text-customRed text-shadow-redglow">languages</span> = [</AnimatedText>
           <AnimatedText delay={0.4} className="ml-72 pl-8 mb-2">"C", "JavaScript", "Python",</AnimatedText>
