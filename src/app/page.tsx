@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
@@ -7,10 +7,16 @@ import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
 import * as reactSpring from "@react-spring/three";
 import * as drei from "@react-three/drei";
 import * as fiber from "@react-three/fiber";
+import { FlipWords } from "@/components/core/flip-words";
+import { ScrollArea } from "@/components/core/scroll-area";
 
 export default function Home() {
+
+  const words = ["Developer", "Student", "Designer", "Thinker"];
+
   return (
     <main className="flex flex-col min-h-screen bg-customDark overflow-hidden">
+      <ScrollArea className="h-screen">
       <div className="relative w-full h-screen">
         <ShaderGradientCanvas
           importedFiber={{ ...fiber, ...drei, ...reactSpring }}
@@ -30,15 +36,13 @@ export default function Home() {
         </ShaderGradientCanvas>
 
         <div className="absolute inset-0 flex flex-col justify-end items-start p-8 z-10 mb-24 ml-8">
-          <h1 className="text-white text-3xl md:text-4xl font-bold text-shadow-glow pb-48 mb-48">
+          <h1 className="text-white text-3xl md:text-4xl font-bold text-shadow-glow pb-48 mb-36">
             Jakarta, Indonesia
           </h1>
           <h1 className="text-white text-5xl md:text-7xl lg:text-9xl font-bold mb-4 text-shadow-glow">
             Valtrizt
           </h1>
-          <h2 className="text-white text-2xl md:text-3xl lg:text-5xl font-medium ml-1 text-shadow-glow">
-            Fullstack Dev
-          </h2>
+          <FlipWords words={words} /> <br />
         </div>
 
         <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-b from-transparent to-customDark pointer-events-none"></div>
@@ -54,6 +58,7 @@ export default function Home() {
         <About />
         <Projects />
       </div>
+      </ScrollArea>
     </main>
   );
 }

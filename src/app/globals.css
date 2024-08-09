@@ -63,7 +63,11 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
+    scroll-behavior: smooth;
     overflow-x: hidden;
     @apply bg-background text-foreground;
   }

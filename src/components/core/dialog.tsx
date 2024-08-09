@@ -18,7 +18,7 @@ import {
 } from 'framer-motion';
 import { createPortal } from 'react-dom';
 import { cn } from '@/lib/utils';
-import useClickOutside from '@/hooks/useClickOutside';
+import { useOutsideClick } from "@/hooks/use-outside-click";
 import { XIcon } from 'lucide-react';
 
 interface DialogContextType {
@@ -182,7 +182,7 @@ function DialogContent({ children, className, style }: DialogContent) {
     }
   }, [isOpen, triggerRef]);
 
-  useClickOutside(containerRef, () => {
+  useOutsideClick(containerRef, () => {
     if (isOpen) {
       setIsOpen(false);
     }
