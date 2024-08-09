@@ -37,12 +37,12 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ children, delay = 0, classN
 
 const About: React.FC = () => {
   return (
-    <div className="relative z-10 flex flex-col min-h-screen p-8">
+    <div className="relative z-10 flex flex-col min-h-screen p-8 w-full">
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-customRed text-left pl-10 mt-8 text-4xl md:text-6xl font-medium text-shadow-redglow"
+        className="text-customRed text-left px-10 mt-8 text-2xl md:text-6xl font-medium text-shadow-redglow"
       >
         About Me
       </motion.h1>
@@ -51,21 +51,21 @@ const About: React.FC = () => {
           <AnimatedText delay={0.1}>this.<span className="text-customRed text-shadow-redglow">name</span> = "Valtrizt";</AnimatedText>
           <AnimatedText delay={0.2}>this.<span className="text-customRed text-shadow-redglow">role</span> = "Full Stack Dev";</AnimatedText>
           <AnimatedText delay={0.3}>this.<span className="text-customRed text-shadow-redglow">languages</span> = [</AnimatedText>
-          <AnimatedText delay={0.4} className="ml-72 pl-8 mb-2">"C", "JavaScript", "Python",</AnimatedText>
-          <AnimatedText delay={0.5} className="ml-72 pl-8 mb-8">"TypeScript", "Java", "HTML/CSS"</AnimatedText>
-          <AnimatedText delay={0.6} className="ml-72">];</AnimatedText>
+          <AnimatedText delay={0.4} className="ml-24 md:ml-72 pl-8 mb-2">"C", "JavaScript", "Python",</AnimatedText>
+          <AnimatedText delay={0.5} className="ml-24 md:ml-72 pl-8 mb-8">"TypeScript", "Java", "HTML/CSS"</AnimatedText>
+          <AnimatedText delay={0.6} className="ml-24 md:ml-72">];</AnimatedText>
 
           <AnimatedText delay={0.7}>
             this.<span className="text-customRed text-shadow-redglow">frameworks</span> = [
           </AnimatedText>
-          <AnimatedText delay={0.8} className="ml-72 pl-8 mb-8">"React", "Node.js", "Express", "Next.js"</AnimatedText>
-          <AnimatedText delay={0.9} className="ml-72">];</AnimatedText>
+          <AnimatedText delay={0.8} className="ml-24 md:ml-72 pl-8 mb-8">"React", "Node.js", "Express", "Next.js"</AnimatedText>
+          <AnimatedText delay={0.9} className="ml-24 md:ml-72">];</AnimatedText>
 
           <AnimatedText delay={1.0}>
             this.<span className="text-customRed text-shadow-redglow">databases</span> = [
           </AnimatedText>
-          <AnimatedText delay={1.1} className="ml-72 pl-8 mb-2">"MySQL", "PostgreSQL", "MongoDB", "Prisma", "Supabase"</AnimatedText>
-          <AnimatedText delay={1.2} className="ml-72">];</AnimatedText>
+          <AnimatedText delay={1.1} className="ml-24 md:ml-72 pl-8 mb-2">"MySQL", "PostgreSQL", "MongoDB", "Prisma", "Supabase"</AnimatedText>
+          <AnimatedText delay={1.2} className="ml-24 md:ml-72">];</AnimatedText>
         </div>
       </div>
     </div>

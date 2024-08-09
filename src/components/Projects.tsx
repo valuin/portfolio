@@ -171,13 +171,13 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
           </div>
         )}
       </AnimatePresence>
-      <div className="grid grid-cols-4 md:grid-cols-4 gap-4 p-4 w-full max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 w-full justify-center max-w-64 md:max-w-6xl mx-auto">
         {items.map((item, index) => (
           <motion.div
             layoutId={`card-${item.title}-${id}`}
             key={item.title}
             onClick={() => setActive(item)}
-            className={`bg-gray-800 rounded-lg overflow-hidden hover:duration-200 shadow-lg hover:shadow-customRed/70 cursor-pointer ${item.className}`}
+            className={`bg-gray-800 rounded-lg overflow-hidden object-contain hover:duration-200 shadow-lg hover:shadow-customRed/70 cursor-pointer ${item.className}`}
             style={{ aspectRatio: item.aspectRatio || "1 / 1" }}
           >
             <motion.div
@@ -189,7 +189,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
                   src={item.image}
                   alt={item.title}
                   layout="fill"
-                  objectFit="cover"
+                  style={{ objectFit: "cover" }}
                 />
               )}
             </motion.div>
@@ -285,13 +285,14 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <div className="relative z-10 flex flex-col items-center min-h-screen p-8 w-full">
-        <h1 className="text-white text-center mt-8 mb-12 text-4xl md:text-6xl font-medium text-shadow-glow">
+    <div className="relative z-10 flex flex-col justify-center items-center min-h-screen px-8 w-full p-8">
+        <h1 className="text-white text-center mt-8 mb-12 text-2xl md:text-6xl max-w-fit md:max-w-6xl font-medium text-shadow-glow">
           Selected Projects
         </h1>
       <div className="w-full">
         <BentoGrid items={projectItems} />
       </div>
+      console.log(window.innerWidth);
     </div>
   );
 };

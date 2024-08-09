@@ -15,7 +15,7 @@ export default function Home() {
   const words = ["Developer", "Student", "Designer", "Thinker"];
 
   return (
-    <main className="flex flex-col min-h-screen bg-customDark overflow-hidden">
+    <main className="flex flex-col min-h-screen bg-customDark">
       <ScrollArea className="h-screen">
       <div className="relative w-full h-screen">
         <ShaderGradientCanvas
@@ -35,11 +35,11 @@ export default function Home() {
           />
         </ShaderGradientCanvas>
 
-        <div className="absolute inset-0 flex flex-col justify-end items-start p-8 z-10 mb-24 ml-8">
-          <h1 className="text-white text-3xl md:text-4xl font-bold text-shadow-glow pb-48 mb-36">
+        <div className="absolute inset-0 flex flex-col justify-end items-start p-8 z-10 mb-24 ml-2 md:ml-8">
+          <h1 className="text-white text-2xl md:text-4xl font-bold text-shadow-glow pb-48 mb-36">
             Jakarta, Indonesia
           </h1>
-          <h1 className="text-white text-5xl md:text-7xl lg:text-9xl font-bold mb-4 text-shadow-glow">
+          <h1 className="text-white text-5xl md:text-7xl lg:text-9xl font-bold ml-2 mb-4 text-shadow-glow">
             Valtrizt
           </h1>
           <FlipWords words={words} /> <br />
@@ -48,7 +48,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-b from-transparent to-customDark pointer-events-none"></div>
       </div>
 
-      <div className="relative w-full min-h-screen bg-customDark mt-8">
+      <div className="relative w-full min-h-screen justify-center items-center bg-customDark mt-8">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

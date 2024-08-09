@@ -68,7 +68,8 @@
   }
   body {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: auto;
+
     @apply bg-background text-foreground;
   }
 }
