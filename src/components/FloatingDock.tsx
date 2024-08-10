@@ -38,10 +38,15 @@ export function FloatingDock() {
 
 function SocialIcon({ mouseX, icon, href, name }: { mouseX: MotionValue, icon: React.ReactNode, href: string, name: string }) {
   const [isOpen, setIsOpen] = useState(false);
-  let distance = useTransform(mouseX, (val) => {
-    let bounds = document.getElementById(name)?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - bounds.x - bounds.width / 2;
+  
+  const distance = useTransform(mouseX, (val) => {
+    if (typeof window !== 'undefined') {
+      const bounds = document.getElementById(name)?.getBoundingClientRect() ?? { x: 0, width: 0 };
+      return val - bounds.x - bounds.width / 2;
+    }
+    return 0;
   });
+
   let widthSync = useTransform(distance, [-150, 0, 150], [40, 60, 40]);
   let width = useSpring(widthSync, { mass: 0.1, stiffness: 400, damping: 18 });
 
