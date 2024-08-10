@@ -71,7 +71,7 @@ function SocialIcon({ mouseX, icon, href, name }: { mouseX: MotionValue, icon: R
           </a>
         </motion.div>
       </PopoverTrigger>
-      <PopoverContent className="px-2 py-1 bg-transparent text-customRed shadow-md text-md rounded">
+      <PopoverContent className="px-2 py-1 bg-transparent text-customRed font-semibold text-md rounded">
         {name}
       </PopoverContent>
     </Popover>
