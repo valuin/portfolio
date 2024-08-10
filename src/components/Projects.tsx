@@ -114,7 +114,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden backdrop-filter backdrop-blur-lg bg-opacity-30"
+              className="w-full max-w-[300px] md:max-w-[500px] h-3/4 md:h-fit md:max-h-full flex flex-col bg-white dark:bg-neutral-900 rounded-2xl sm:rounded-3xl overflow-hidden backdrop-filter backdrop-blur-lg bg-opacity-30"
             >
               <motion.div
                 layoutId={`image-${active.title}-${id}`}
@@ -138,7 +138,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
                   </motion.h3>
                   <motion.p
                     layoutId={`description-${active.description}-${id}`}
-                    className="text-customDark text-base mb-4"
+                    className="text-black shadow-customDark text-base mb-4"
                   >
                     {active.description}
                   </motion.p>
@@ -161,7 +161,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
                     href={active.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-block px-4 py-2 text-sm rounded-full font-bold bg-green-500 text-white"
+                    className="mt-4 inline-block px-4 py-2 text-sm rounded-full font-bold bg-customDark text-white hover:bg-customRed transition-colors"
                   >
                     View Project
                   </motion.a>
@@ -189,7 +189,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
                   src={item.image}
                   alt={item.title}
                   layout="fill"
-                  objectFit="cover"
+                  style={{ objectFit: "cover" }}
                 />
               )}
             </motion.div>
@@ -227,69 +227,61 @@ const CloseIcon = () => {
 const Projects: React.FC = () => {
   const projectItems: Item[] = [
     {
-      title: "Project 1",
-      description: "Description 1",
+      title: "Econity",
+      description: "A mobile app prototype for a trash-picking app with a gamification system, built using Flutter for prototype and Figma for UI design.",
       image: "/Econity.png",
       className: "col-span-2 row-span-1",
       aspectRatio: "2 / 1",
-      link: "https://example.com/project1",
+      link: "https://www.canva.com/design/DAF7bBTX3nk/N6cNf0-dDZtUM674SD32Pg/edit?utm_content=DAF7bBTX3nk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
     },
     {
-      title: "Project 6",
-      description: "Description 6",
+      title: "SEA Salon",
+      description: "This project is a submission for the selection of Compfest Academy, built using Next.js and Supabase. It features Tailwind CSS for styling and Vercel for deployment.",
       image: "/Salon.png",
       className: "col-span-2 row-span-1",
       aspectRatio: "2 / 1",
-      link: "https://example.com/project6",
+      link: "https://github.com/valuin/SEA-Salon-Compfest",
     },
     {
-      title: "Project 5",
-      description: "Description 5",
+      title: "Calculator App",
+      description: "A simple calculator UI design using Figma",
       image: "/Calculator.png",
       className: "col-span-1 row-span-3",
       aspectRatio: "9 / 16",
-      link: "https://example.com/project5",
+      link: "https://www.figma.com/design/85bDMA0vreOyaWYFXlPIX7/Calculator?node-id=0-1&t=N6uZGfZj0CMMZHCK-1",
     },
     {
-      title: "Project 7",
-      description: "Description 7",
+      title: "Moneasy",
+      description: "financial management web app integrated with AI. Top 5 at hackjakarta 2024 financial inclusion track. Built using React, Next.js, and Supabase.",
       image: "/Moneasy.png",
       className: "col-span-2 row-span-2",
       aspectRatio: "16 / 9",
-      link: "https://example.com/project7",
+      link: "https://github.com/valuin/moneasy",
     },
     {
-      title: "Project 34",
-      description: "Description 344",
-      image: "/Code.jpg",
+      title: "Hotel Management App",
+      description: "Full-stack web app for hotel management simulation, built using Next.js and MySQL.",
+      image: "/Hotel.png",
       className: "col-span-1 row-span-1",
       aspectRatio: "11 / 13",
-      link: "https://example.com/project3",
+      link: "https://github.com/valuin/hotel_express_fullstack",
     },
     {
-      title: "Project 2",
-      description: "Description 2",
+      title: "Movie Search Web",
+      description: "Developed an IMDB-like web application using React, Tailwind, and Next.js, resulting in a responsive interface that can handle 1,000+ movies.",
       image: "/Mupi.png",
       className: "col-span-2 row-span-2",
       aspectRatio: "16 / 9",
       link: "https://example.com/project2",
     },
-    {
-      title: "Project 3",
-      description: "Description 3",
-      image: "/Dashboard.png",
-      className: "col-span-1 row-span-1",
-      aspectRatio: "9 / 16",
-      link: "https://example.com/project3",
-    },
   ];
 
   return (
     <div className="relative z-10 flex flex-col items-center min-h-screen p-8 w-full">
-        <h1 className="text-white text-center mt-8 mb-12 text-4xl md:text-6xl font-medium text-shadow-glow">
+        <h1 className="text-white text-center mt-8 mr-6 md:mr-0 mb-12 text-4xl md:text-6xl font-medium text-shadow-glow">
           Selected Projects
         </h1>
-      <div className="w-full">
+      <div className="w-full mr-6 md:mr-0">
         <BentoGrid items={projectItems} />
       </div>
     </div>

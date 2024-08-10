@@ -36,16 +36,16 @@ export default function Home() {
             />
           </ShaderGradientCanvas>
 
-          <div className="absolute inset-0 flex flex-col justify-end items-start p-8 z-10 mb-24 ml-8">
+          <div className="absolute inset-0 flex flex-col justify-end items-start p-8 z-10 mb-24 px-8 md:px-20">
             <GradualSpacing
-              className="text-3xl md:text-4xl font-bold pb-48 mb-36 text-white text-shadow-glow"
+              className="text-lg md:text-4xl md:leading-[5rem] font-bold pb-48 mb-80 md:mb-56 text-white text-shadow-glow tracking-[-0.1em]"
               text="Jakarta, Indonesia"
             />
             <GradualSpacing
-              className="text-white text-5xl md:text-7xl lg:text-9xl font-bold mb-4 text-shadow-glow"
+              className="text-white text-5xl ml-1 md:ml-0 md:text-7xl lg:text-9xl font-bold mb-4 text-shadow-glow"
               text="Valtrizt"
             />
-            <FlipWords words={words} /> <br />
+            <FlipWords words={words} />
           </div>
           <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-b from-transparent to-customDark pointer-events-none">
           </div>
