@@ -65,7 +65,6 @@ function SocialIcon({ mouseX, icon, href, name }: { mouseX: MotionValue, icon: R
             target="_blank" 
             rel="noopener noreferrer" 
             className="text-white text-shadow-glow text-2xl"
-            onClick={(e) => e.preventDefault()} // Prevent default to allow popover to work
           >
             {icon}
           </a>
