@@ -1,111 +1,91 @@
-import React from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import React, { useEffect, useRef } from 'react';
 
-interface AnimatedTextProps {
+interface FadeInElementProps {
   children: React.ReactNode;
-  delay?: number;
   className?: string;
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = ({
-  children,
-  delay = 0,
-  className,
-}) => {
-  const controls = useAnimation();
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true });
+const FadeInElement: React.FC<FadeInElementProps> = ({ children, className = '' }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.9 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
     }
-  }, [controls, isInView]);
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
 
   return (
-    <motion.p
+    <div
       ref={ref}
-      className={className}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.5, delay }}
+      className={`fade-element ${className}`}
     >
       {children}
-    </motion.p>
+    </div>
   );
 };
 
 const About: React.FC = () => {
   return (
     <div className="relative z-10 flex flex-col min-h-screen p-8">
-      <div className="relative z-10 flex px-6 flex-col min-h-screen justify-center items-center text-white text-shadow-glow">
-        <motion.h1
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-customRed text-left mb-24 text-4xl md:text-6xl font-medium text-shadow-redglow"
-        >
+      <div className="relative z-10 flex px-6 flex-col min-h-screen justify-center items-center text-white">
+        <FadeInElement className="text-customRed text-shadow-redglow text-left mb-24 text-4xl md:text-6xl font-medium">
           About Me
-        </motion.h1>
-        <div className="font-mono text-lg md:text-2xl lg:text-3xl space-y-4">
-          <AnimatedText delay={0.1}>
-            this.
-            <span className="text-customRed text-shadow-redglow">name</span> =
-            "Valtrizt";
-          </AnimatedText>
-          <AnimatedText delay={0.2}>
-            this.
-            <span className="text-customRed text-shadow-redglow">role</span> =
-            "Full Stack Dev";
-          </AnimatedText>
-          <AnimatedText delay={0.3}>
-            this.
-            <span className="text-customRed text-shadow-redglow">
-              languages
-            </span>{" "}
-            = [
-          </AnimatedText>
-          <AnimatedText delay={0.4} className="ml-36 md:ml-72 pl-8 mb-2">
+        </FadeInElement>
+        <div className="font-mono text-lg text-shadow-glow md:text-2xl lg:text-3xl space-y-4">
+          <FadeInElement>
+            this.<span className="text-customRed text-shadow-redglow">name</span> = "Valtrizt";
+          </FadeInElement>
+          <FadeInElement>
+            this.<span className="text-customRed text-shadow-redglow">role</span> = "Full Stack Dev";
+          </FadeInElement>
+          <FadeInElement>
+            this.<span className="text-customRed text-shadow-redglow">languages</span> = [
+          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72 pl-8 mb-2">
             "C", "JavaScript", "Python",
-          </AnimatedText>
-          <AnimatedText delay={0.5} className="ml-36 md:ml-72 pl-8 mb-8">
+          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
             "TypeScript", "Java", "HTML/CSS"
-          </AnimatedText>
-          <AnimatedText delay={0.6} className="ml-36 md:ml-72">
+          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72">
             ];
-          </AnimatedText>
+          </FadeInElement>
 
-          <AnimatedText delay={0.7}>
-            this.
-            <span className="text-customRed text-shadow-redglow">
-              frameworks
-            </span>{" "}
-            = [
-          </AnimatedText>
-          <AnimatedText delay={0.8} className="ml-36 md:ml-72 pl-8 mb-8">
+          <FadeInElement>
+            this.<span className="text-customRed text-shadow-redglow">frameworks</span> = [
+          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
             "React", "Node.js", "Express", "Next.js"
-          </AnimatedText>
-          <AnimatedText delay={0.9} className="ml-36 md:ml-72">
+          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72">
             ];
-          </AnimatedText>
+          </FadeInElement>
 
-          <AnimatedText delay={1.0}>
-            this.
-            <span className="text-customRed text-shadow-redglow">
-              databases
-            </span>{" "}
-            = [
-          </AnimatedText>
-          <AnimatedText delay={1.1} className="ml-36 md:ml-72 pl-8 mb-2">
+          <FadeInElement>
+            this.<span className="text-customRed text-shadow-redglow">databases</span> = [
+          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72 pl-8 mb-2">
             "MySQL", "PostgreSQL", "MongoDB", "Prisma", "Supabase"
-          </AnimatedText>
-          <AnimatedText delay={1.2} className="ml-36 md:ml-72">
+          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72">
             ];
-          </AnimatedText>
+          </FadeInElement>
         </div>
       </div>
     </div>
