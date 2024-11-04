@@ -47,7 +47,7 @@ const About: React.FC = () => {
         <FadeInElement className="text-customRed text-shadow-redglow text-left mb-24 text-4xl md:text-6xl font-medium">
           About Me
         </FadeInElement>
-        <div className="font-mono text-lg text-shadow-glow md:text-2xl lg:text-3xl space-y-4">
+        <div className=" text-lg text-shadow-glow md:text-2xl lg:text-3xl space-y-4">
           <FadeInElement>
             this.<span className="text-customRed text-shadow-redglow">name</span> = "Valtrizt";
           </FadeInElement>

@@ -92,6 +92,7 @@ const config: Config = {
   },
   plugins: [
     require("tailwindcss-animate"),
+    require("tailwind-gradient-mask-image"),
     function ({ addUtilities }: PluginAPI) {
       addUtilities({
         '.text-shadow-glow': {
