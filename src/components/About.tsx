@@ -52,7 +52,7 @@ const About: React.FC = () => {
             this.<span className="text-customRed text-shadow-redglow">name</span> = "Valtrizt";
           </FadeInElement>
           <FadeInElement>
-            this.<span className="text-customRed text-shadow-redglow">role</span> = "Full Stack Dev";
+            this.<span className="text-customRed text-shadow-redglow">role</span> = "Software Engineer";
           </FadeInElement>
           <FadeInElement>
             this.<span className="text-customRed text-shadow-redglow">languages</span> = [
@@ -61,7 +61,7 @@ const About: React.FC = () => {
             "C", "JavaScript", "Python",
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
-            "TypeScript", "Java", "HTML/CSS"
+            "TypeScript", "Kotlin", "HTML/CSS"
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72">
             ];
