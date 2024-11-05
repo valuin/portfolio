@@ -1,40 +1,42 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 interface FadeInElementProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const FadeInElement: React.FC<FadeInElementProps> = ({ children, className = '' }) => {
+const FadeInElement: React.FC<FadeInElementProps> = ({
+  children,
+  className = "",
+}) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
+          entry.target.classList.add("fade-in");
           observer.unobserve(entry.target);
         }
       },
       { threshold: 0.9 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className={`fade-element ${className}`}
-    >
+    <div ref={ref} className={`fade-element ${className}`}>
       {children}
     </div>
   );
@@ -49,13 +51,21 @@ const About: React.FC = () => {
         </FadeInElement>
         <div className=" text-lg text-shadow-glow md:text-2xl lg:text-3xl space-y-4">
           <FadeInElement>
-            this.<span className="text-customRed text-shadow-redglow">name</span> = "Valtrizt";
+            this.
+            <span className="text-customRed text-shadow-redglow">name</span> =
+            "Valtrizt";
           </FadeInElement>
           <FadeInElement>
-            this.<span className="text-customRed text-shadow-redglow">role</span> = "Software Engineer";
+            this.
+            <span className="text-customRed text-shadow-redglow">role</span> =
+            "Software Engineer";
           </FadeInElement>
           <FadeInElement>
-            this.<span className="text-customRed text-shadow-redglow">languages</span> = [
+            this.
+            <span className="text-customRed text-shadow-redglow">
+              languages
+            </span>{" "}
+            = [
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-2">
             "C", "JavaScript", "Python",
@@ -63,29 +73,31 @@ const About: React.FC = () => {
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
             "TypeScript", "Kotlin", "HTML/CSS"
           </FadeInElement>
-          <FadeInElement className="ml-36 md:ml-72">
-            ];
-          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72">];</FadeInElement>
 
           <FadeInElement>
-            this.<span className="text-customRed text-shadow-redglow">frameworks</span> = [
+            this.
+            <span className="text-customRed text-shadow-redglow">
+              frameworks
+            </span>{" "}
+            = [
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
             "React", "Node.js", "Express", "Next.js"
           </FadeInElement>
-          <FadeInElement className="ml-36 md:ml-72">
-            ];
-          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72">];</FadeInElement>
 
           <FadeInElement>
-            this.<span className="text-customRed text-shadow-redglow">databases</span> = [
+            this.
+            <span className="text-customRed text-shadow-redglow">
+              databases
+            </span>{" "}
+            = [
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-2">
             "MySQL", "PostgreSQL", "MongoDB", "Prisma", "Supabase"
           </FadeInElement>
-          <FadeInElement className="ml-36 md:ml-72">
-            ];
-          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72">];</FadeInElement>
         </div>
       </div>
     </div>

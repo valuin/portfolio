@@ -1,4 +1,11 @@
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+} from "react";
 import Image from "next/image";
 import {
   AnimatePresence,
@@ -8,12 +15,6 @@ import {
 } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { ScrollArea } from "@/components/core/scroll-area";
-
-interface AnimatedTextProps {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}
 
 interface Item {
   image?: string;
@@ -29,40 +30,9 @@ interface BentoGridProps {
   items: Item[];
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = ({
-  children,
-  delay = 0,
-  className,
-}) => {
-  const controls = useAnimation();
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  React.useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [controls, isInView]);
-
-  return (
-    <motion.p
-      ref={ref}
-      className={className}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.7, delay }}
-    >
-      {children}
-    </motion.p>
-  );
-};
-
-const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
+const BentoGrid: React.FC<BentoGridProps> = React.memo(({ items }) => {
   const [active, setActive] = useState<Item | null>(null);
+  const closeActive = useCallback(() => setActive(null), []);
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -73,17 +43,23 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
       }
     }
 
-    if (active) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [active]);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, []);
 
   useOutsideClick(ref, () => setActive(null));
+  
+  const handleItemClick = useCallback((item: Item) => setActive(item), []);
+
+  const itemClickHandlers = useMemo(() => {
+    return items.reduce((handlers, item) => {
+      handlers[item.title] = () => handleItemClick(item);
+      return handlers;
+    }, {} as { [key: string]: () => void });
+  }, [items, handleItemClick]);
 
   return (
     <>
@@ -107,7 +83,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.05 } }}
               className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
-              onClick={() => setActive(null)}
+              onClick={closeActive}
             >
               <CloseIcon />
             </motion.button>
@@ -176,7 +152,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
           <motion.div
             layoutId={`card-${item.title}-${id}`}
             key={item.title}
-            onClick={() => setActive(item)}
+            onClick={itemClickHandlers[item.title]}
             className={`bg-gray-800 rounded-lg overflow-hidden hover:duration-200 shadow-lg hover:shadow-customRed/70 cursor-pointer ${item.className}`}
             style={{ aspectRatio: item.aspectRatio || "1 / 1" }}
           >
@@ -198,7 +174,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ items }) => {
       </div>
     </>
   );
-};
+});
+
+BentoGrid.displayName = 'BentoGrid';
 
 const CloseIcon = () => {
   return (
@@ -228,7 +206,8 @@ const Projects: React.FC = () => {
   const projectItems: Item[] = [
     {
       title: "Econity",
-      description: "A mobile app prototype for a trash-picking app with a gamification system, built using Flutter for prototype and Figma for UI design.",
+      description:
+        "A mobile app prototype for a trash-picking app with a gamification system, built using Flutter for prototype and Figma for UI design.",
       image: "/Econity.png",
       className: "col-span-2 row-span-1",
       aspectRatio: "2 / 1",
@@ -236,7 +215,8 @@ const Projects: React.FC = () => {
     },
     {
       title: "SEA Salon",
-      description: "This project is a submission for the selection of Compfest Academy, built using Next.js and Supabase. It features Tailwind CSS for styling and Vercel for deployment.",
+      description:
+        "This project is a submission for the selection of Compfest Academy, built using Next.js and Supabase. It features Tailwind CSS for styling and Vercel for deployment.",
       image: "/Salon.png",
       className: "col-span-2 row-span-1",
       aspectRatio: "2 / 1",
@@ -252,7 +232,8 @@ const Projects: React.FC = () => {
     },
     {
       title: "Moneasy",
-      description: "financial management web app integrated with AI. Top 5 at hackjakarta 2024 financial inclusion track. Built using React, Next.js, and Supabase.",
+      description:
+        "financial management web app integrated with AI. Top 5 at hackjakarta 2024 financial inclusion track. Built using React, Next.js, and Supabase.",
       image: "/Moneasy.png",
       className: "col-span-2 row-span-2",
       aspectRatio: "16 / 9",
@@ -260,7 +241,8 @@ const Projects: React.FC = () => {
     },
     {
       title: "Hotel Management App",
-      description: "Full-stack web app for hotel management simulation, built using Next.js and MySQL.",
+      description:
+        "Full-stack web app for hotel management simulation, built using Next.js and MySQL.",
       image: "/Hotel.png",
       className: "col-span-1 row-span-1",
       aspectRatio: "11 / 13",
@@ -268,7 +250,8 @@ const Projects: React.FC = () => {
     },
     {
       title: "Movie Search Web",
-      description: "Developed an IMDB-like web application using React, Tailwind, and Next.js, resulting in a responsive interface that can handle 1,000+ movies.",
+      description:
+        "Developed an IMDB-like web application using React, Tailwind, and Next.js, resulting in a responsive interface that can handle 1,000+ movies.",
       image: "/Mupi.png",
       className: "col-span-2 row-span-2",
       aspectRatio: "16 / 9",
@@ -278,9 +261,9 @@ const Projects: React.FC = () => {
 
   return (
     <div className="relative z-10 flex flex-col items-center min-h-screen p-8 w-full">
-        <h1 className="text-white text-center mt-8 mr-6 md:mr-0 mb-12 text-4xl md:text-6xl font-medium text-shadow-glow">
-          Selected Projects
-        </h1>
+      <h1 className="text-white text-center mt-8 mr-6 md:mr-0 mb-12 text-4xl md:text-6xl font-medium text-shadow-glow">
+        Selected Projects
+      </h1>
       <div className="w-full mr-6 md:mr-0">
         <BentoGrid items={projectItems} />
       </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
@@ -11,12 +11,31 @@ import { ScrollArea } from "@/components/core/scroll-area";
 import GradualSpacing from "@/components/core/gradual-spacing";
 import { FloatingDock } from "@/components/FloatingDock";
 
+type ShaderGradientProps = {
+  control?: "query" | "props";
+  dampingFactor?: number;
+  frameRate?: number;
+  grain?: "on" | "off";
+  lightType?: "env" | "3d";
+  urlString?: string;
+};
+
 export default function Home() {
   const words = ["Developer", "Student", "Designer", "Thinker"];
+
+  const MemoizedShaderGradient =
+    React.memo<ShaderGradientProps>(ShaderGradient);
 
   return (
     <main className="flex flex-col min-h-screen bg-customDark">
       <ScrollArea className="h-screen relative">
+        <>
+          <div className="fixed inset-x-0 top-0 z-20 h-20 backdrop-blur-[6px] gradient-mask-b-10" />
+          <div className="fixed inset-x-0 top-0 z-20 h-20 backdrop-blur-[1px] gradient-mask-b-20" />
+          <div className="fixed inset-x-0 top-0 z-20 h-20 backdrop-blur-[1.5px] gradient-mask-b-30" />
+          <div className="fixed inset-x-0 top-0 z-20 h-20 backdrop-blur-[2px] gradient-mask-b-40" />
+          <div className="fixed inset-x-0 top-0 z-20 h-20 backdrop-blur-[10px] gradient-mask-b-50" />
+        </>
         <div>
           <FloatingDock />
           <div className="relative w-full h-screen">
@@ -30,8 +49,16 @@ export default function Home() {
                 height: "100%",
                 pointerEvents: "none",
               }}
+              gl={{ antialias: false }}
+              dpr={[1, 1.5]}
+              pixelDensity={1}
+              fov={50}
+              frameRate={30}
             >
-              <ShaderGradient
+              <MemoizedShaderGradient
+                dampingFactor={0.1}
+                lightType="env"
+                grain="off"
                 control="query"
                 urlString={process.env.NEXT_PUBLIC_SHADER_GRADIENT_URL}
               />
@@ -65,6 +92,13 @@ export default function Home() {
             <Projects />
           </div>
         </div>
+        <>
+          <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[0.5px] gradient-mask-t-90" />
+          <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-70" />
+          <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1.5px] gradient-mask-t-50" />
+          <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[2px] gradient-mask-t-30" />
+          <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[2.5px] gradient-mask-t-10" />
+        </>
       </ScrollArea>
     </main>
   );
