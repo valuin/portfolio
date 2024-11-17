@@ -105,22 +105,22 @@ function SocialIcon({
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white text-shadow-glow text-2xl"
+        <motion.div
+          id={name}
+          style={{ width }}
+          className="aspect-square w-24 rounded-full backdrop-filter backdrop-blur-lg bg-opacity-30 bg-slate-600 flex items-center justify-center hover:bg-customRed transition-colors cursor-pointer"
+          onMouseEnter={() => setIsOpen(true)}
+          onMouseLeave={() => setIsOpen(false)}
         >
-          <motion.div
-            id={name}
-            style={{ width }}
-            className="aspect-square w-24 rounded-full backdrop-filter backdrop-blur-lg bg-opacity-30 bg-slate-600 flex items-center justify-center hover:bg-customRed transition-colors cursor-pointer"
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white text-shadow-glow text-2xl"
           >
             {icon}
-          </motion.div>
-        </a>
+          </a>
+        </motion.div>
       </PopoverTrigger>
       <PopoverContent className="px-2 py-1 bg-transparent text-customRed font-semibold text-md rounded">
         {name}
