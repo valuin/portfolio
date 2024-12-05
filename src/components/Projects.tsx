@@ -223,12 +223,13 @@ const Projects: React.FC = () => {
       link: "https://github.com/valuin/SEA-Salon-Compfest",
     },
     {
-      title: "Calculator App",
-      description: "A simple calculator UI design using Figma",
-      image: "/Calculator.png",
-      className: "col-span-1 row-span-3",
-      aspectRatio: "9 / 16",
-      link: "https://www.figma.com/design/85bDMA0vreOyaWYFXlPIX7/Calculator?node-id=0-1&t=N6uZGfZj0CMMZHCK-1",
+      title: "Android Portal",
+      description:
+        "Worked as the backend for a super app for a uni coding club, built using express and typescript with prisma",
+      image: "/androportal.png",
+      className: "col-span-1 row-span-1",
+      aspectRatio: "16 / 9",
+      link: "https://portal-dev.androidupnvj.com/login",
     },
     {
       title: "Moneasy",
@@ -240,12 +241,21 @@ const Projects: React.FC = () => {
       link: "https://github.com/valuin/moneasy",
     },
     {
+      title: "Haruma",
+      description:
+        "Founder and CEO for a local alternative to fragrantica, in progress",
+      image: "/Haruma.png",
+      className: "col-span-1 row-span-2",
+      aspectRatio: "1 / 1",
+      link: "https://haruma.vercel.app",
+    },
+    {
       title: "Hotel Management App",
       description:
         "Full-stack web app for hotel management simulation, built using Next.js and MySQL.",
       image: "/Hotel.png",
-      className: "col-span-1 row-span-1",
-      aspectRatio: "11 / 13",
+      className: "col-span-1 row-span-2",
+      aspectRatio: "1 / 1",
       link: "https://github.com/valuin/hotel_express_fullstack",
     },
     {
@@ -256,7 +266,7 @@ const Projects: React.FC = () => {
       className: "col-span-2 row-span-2",
       aspectRatio: "16 / 9",
       link: "https://example.com/project2",
-    },
+    }
   ];
 
   return (
