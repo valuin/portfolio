@@ -68,7 +68,7 @@ const About: React.FC = () => {
             = [
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-2">
-            "C", "JavaScript", "Python",
+            "Javascript", "Python", "PHP",
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
             "TypeScript", "Kotlin", "HTML/CSS"
@@ -83,7 +83,10 @@ const About: React.FC = () => {
             = [
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
-            "React", "Node.js", "Express", "Next.js"
+            "React", "Node.js", "Express"
+          </FadeInElement>
+          <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
+            "Next.js", "Laravel"
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72">];</FadeInElement>
 
