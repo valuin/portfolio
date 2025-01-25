@@ -83,10 +83,10 @@ const About: React.FC = () => {
             = [
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
-            "React", "Node.js", "Express"
+            "React", "React Native", "Expo", "Node.js"
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72 pl-8 mb-8">
-            "Next.js", "Laravel"
+            "Bun", "Elysia", "Next.js", "FastAPI", "Laravel" 
           </FadeInElement>
           <FadeInElement className="ml-36 md:ml-72">];</FadeInElement>
 
