@@ -265,7 +265,7 @@ const Projects: React.FC = () => {
       image: "/Mupi.png",
       className: "col-span-2 row-span-2",
       aspectRatio: "16 / 9",
-      link: "https://example.com/project2",
+      link: "https://github.com/valuin/Movie-Tracker-W-NextJS-React",
     }
   ];
 
